@@ -1,4 +1,4 @@
-# 1ο Εργαστήριο Αρχιτεκτονικής Υπολογιστών
+## 1ο Εργαστήριο Αρχιτεκτονικής Υπολογιστών
 
 1) Ελέγχοντας το αρχείο [starter_se.py](https://github.com/uart/gem5-mirror/blob/master/configs/example/arm/starter_se.py) παρατηρούμε ότι ο default τύπος cpu αν δεν δώσουμε όρισμα είναι ο _atomic_
 
@@ -39,6 +39,9 @@ if self.cpu_cluster.memoryMode() == "timing":
     self.cpu_cluster.addL2(self.cpu_cluster.clk_domain)
 ```
 
-2) 
+2) Διαβάζοντας το stats.txt και την επεξήγηση κάθε στατιστικού βλέπουμε οτι:
+    * sim_seconds: Ο συνολικός χρόνος της προσομοίωσης σε δευτερόλεπτα
+    * sim_insts: Ο αριθμός των εντολών που εκτελέι η CPU
+    * host_inst_rate: Δείκτης απόδοσης του συστήματος, υπολογίζεται ως εντολές/δευτερόλεπτα
 
 3) 
