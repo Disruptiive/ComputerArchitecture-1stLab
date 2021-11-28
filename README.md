@@ -44,4 +44,20 @@ if self.cpu_cluster.memoryMode() == "timing":
     * sim_insts: Ο αριθμός των εντολών που εκτελέι η CPU
     * host_inst_rate: Δείκτης απόδοσης του συστήματος, υπολογίζεται ως εντολές/δευτερόλεπτα
 
-3) 
+3) Απο την εκφώνηση ξέρουμε ότι (miss penalty) L1 = 6 cycles (miss penalty), L2 = 50 cycles και 1 cycle cache hit/instruction execution. Επίσης απο το αρχείο stats.txt μετά το simulation βλέπουμε ότι:
+
+```text
+system.cpu_cluster.cpus.dcache.overallMisses::total          179 
+
+system.cpu_cluster.cpus.icache.overallMisses::total          332
+
+system.cpu_cluster.l2.overallMisses::total                   479 
+
+simInsts                                                     5028
+```
+
+Επομένως ```IL1.miss_num = 332, DL1.miss_num = 179,L2.miss_num = 479, Total_Inst_num = 5028``` 
+
+```math
+CPI = 1 + ((IL1.miss_num+DL1.miss_num)*6+L2.miss_num*50)/Total_Inst_num
+```
