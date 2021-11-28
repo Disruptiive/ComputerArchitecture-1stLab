@@ -69,13 +69,19 @@ simInsts                                                     5028
         * **HPI**: The HPI CPU timing model is tuned to be representative of a modern in-order Armv8-A implementation.
         * **ex5_LITTLE**: ex5 LITTLE core (based on the ARM Cortex-A7)
 
-Τρέχοντας το ίδιο πρόγραμμα (3x3MatrixMult) με τις ίδιες παραμέτρους (--caches) στους 2 επεξεργαστές έχουμε:  
-Για το TimingSimpleCPU: ```simSeconds                                   0.000098```  
-Για το MinorCPU
+Τρέχοντας το ίδιο πρόγραμμα (20x20MatrixMult) με τις ίδιες παραμέτρους (--caches) στους 2 επεξεργαστές έχουμε:  
+Για τον TimingSimpleCPU: ```simSeconds                                   0.001714```  
+Για τον MinorCPU: ```simSeconds                                   0.000895```
 
+Δοκιμάζουμε τώρα για τους 2 επεξεργαστές τους συνδιασμούς μνήμης  LPDDR2_S4_1066_1x32, DDR4_2400_4x16 και συχνότητα CPU 1GHz και 4GHz  
 
+|                 | 1GHz/DDR4_2400_4x16 | 4GHz/DDR4_2400_4x16 | 1GHz/LPDDR2_S4_1066_1x32 | 4GHz/LPDDR2_S4_1066_1x32 |
+|:---------------:|---------------------|---------------------|--------------------------|--------------------------|
+| TimingSimpleCPU |       0.003396      |       0.000875      |         0.003405         |         0.000885         |
+| MinorCPU        |       0.001576      |       0.000554      |         0.001608         |         0.000595         |  
 
-
+Παρατηρούμε ότι ο MinorCPU έχει λίγο μεγαλύτερη ευαισθησία στην αλλαγή τύπου μνήμης από τον TimingSimpleCPU. Παρ' ότι οι προσβάσεις μνήμεις του TimingSimpleCPU είναι ρεαλιστικές ίσως η ύπαρξη του pipeline να δημιουργεί μεγαλύτερη ευαισθησία στην αλλαγή τύπου μνήμης στον MinorCPU
+Ως προς την συχνότητα CPU βλέπουμε ότι ο TimingSimpleCPU έχει μεγαλύτερη ευαισθησία απο τον MinorCPU (με την αλλαγή απο 1GHz σε 4GHz ο χρόνος του TimingSimpleCPU μειώνεται περίπου 4 φορές ενώ του MinorCPU 3). Η διαφορά αυτή ξανά ίσως οφείλεται στην έλλειψη pipeline του TimingSimpleCPU
 
 # Πηγές
 [1\] [https://cirosantilli.com/linux-kernel-module-cheat/#gem5-basesimplecpu](https://cirosantilli.com/linux-kernel-module-cheat/#gem5-basesimplecpu)  
