@@ -61,13 +61,13 @@ simInsts                                                     5028
 ![New eq](https://user-images.githubusercontent.com/43075884/143724745-9f366519-f747-4359-9e0c-b892b0535343.png)  
 και τελικά  ```CPI = 6.37```
 
-4) Υπάρχουν δύο τύποι in-order CPU μοντέλων [[1]](#Πηγές) [[2]](#Πηγέςσ)  
+4) Υπάρχουν δύο τύποι in-order CPU μοντέλων [[1]](#Πηγές) [[2]](#Πηγές) [[3]](#Πηγές)
     * **SimpleCPU**: Simple abstract CPU without a pipeline. They are therefore completely unrealistic. But they also run much faster.
         * **AtomicSimpleCPU**: The AtomicSimpleCPU is the version of SimpleCPU that uses atomic memory accesses. Memory accesses happen instantaneously. The fastest simulation except for KVM, but not realistic at all. It uses the latency estimates from the atomic accesses to estimate overall cache access time. The AtomicSimpleCPU is derived from BaseSimpleCPU, and implements functions to read and write memory, and also to tick, which defines what happens every CPU cycle. It defines the port that is used to hook up to memory, and connects the CPU to the cache.
         * **TimingSimpleCPU**: The TimingSimpleCPU is the version of SimpleCPU that uses timing memory accesses. Memory accesses are realistic, but the CPU has no pipeline. The simulation is faster than detailed models, but slower than AtomicSimpleCPU. It stalls on cache accesses and waits for the memory system to respond prior to proceeding. Like the AtomicSimpleCPU, the TimingSimpleCPU is also derived from BaseSimpleCPU, and implements the same set of functions. It defines the port that is used to hook up to memory, and connects the CPU to the cache. It also defines the necessary functions for handling the response from memory to the accesses sent out.  
     * **MinorCPU**: Generic in-order superscalar core. Minor is an in-order processor model with a fixed pipeline but configurable data structures and execute behaviour. It is intended to be used to model processors with strict in-order execution behaviour and allows visualisation of an instruction’s position in the pipeline through the MinorTrace/minorview.py format/tool. The intention is to provide a framework for micro-architecturally correlating the model with a particular, chosen processor with similar capabilities. Its C++ implementation that can be parametrized to more closely match real cores. The following models extend the MinorCPU class by parametrization to make it match existing CPUs more closely:
-        * HPI: The HPI CPU timing model is tuned to be representative of a modern in-order Armv8-A implementation.
-        * ex5_LITTLE: ex5 LITTLE core (based on the ARM Cortex-A7)
+        * **HPI**: The HPI CPU timing model is tuned to be representative of a modern in-order Armv8-A implementation.
+        * **ex5_LITTLE**: ex5 LITTLE core (based on the ARM Cortex-A7)
 
 
 
@@ -76,5 +76,6 @@ simInsts                                                     5028
 
 
 # Πηγές
-[1]()
-[2]()
+[1\] [https://cirosantilli.com/linux-kernel-module-cheat/#gem5-basesimplecpu](https://cirosantilli.com/linux-kernel-module-cheat/#gem5-basesimplecpu)  
+[2\] [https://www.gem5.org/documentation/general_docs/cpu_models/SimpleCPU](https://www.gem5.org/documentation/general_docs/cpu_models/SimpleCPU)  
+[3\] [https://www.gem5.org/documentation/general_docs/cpu_models/minor_cpu](https://www.gem5.org/documentation/general_docs/cpu_models/minor_cpu)
