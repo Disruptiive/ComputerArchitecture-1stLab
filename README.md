@@ -59,5 +59,5 @@ simInsts                                                     5028
 Επομένως ```IL1.miss_num = 332, DL1.miss_num = 179,L2.miss_num = 479, Total_Inst_num = 5028``` 
 
 ```math
-CPI = 1 + ((IL1.miss_num+DL1.miss_num)*6+L2.miss_num*50)/Total_Inst_num
+CPI = 1 + \frac{IL1.miss_num+DL1.miss_num)*6+L2.miss_num*50}{Total_Inst_num}
 ```
