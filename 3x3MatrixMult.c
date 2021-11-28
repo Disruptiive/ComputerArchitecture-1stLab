@@ -34,7 +34,7 @@ int main(){
         }
         printf("\n");
     }
-    //standard matrix multiplication
+    //matrix multiplication
     for (i=0;i<SIZE;i++){
         for (j=0;j<SIZE;j++){
             //for each element multiply row vector A[i][] with column vector B[][j]
