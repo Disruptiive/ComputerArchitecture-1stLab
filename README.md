@@ -56,8 +56,7 @@ system.cpu_cluster.l2.overallMisses::total                   479
 simInsts                                                     5028
 ```
 
-Επομένως ```IL1.miss_num = 332, DL1.miss_num = 179,L2.miss_num = 479, Total_Inst_num = 5028``` 
-
-```math
-CPI = 1 + \frac{IL1.miss_num+DL1.miss_num)*6+L2.miss_num*50}{Total_Inst_num}
-```
+Επομένως ```IL1.miss_num = 332, DL1.miss_num = 179,L2.miss_num = 479, Total_Inst_num = 5028``` και χρησιμοποιώντας την εξίσωση της εκφώνησης ![Formula](https://user-images.githubusercontent.com/43075884/143724729-b66cb8b2-3c21-4102-a2a6-818282ddf972.png)  
+προκύπτει ότι  
+![New eq](https://user-images.githubusercontent.com/43075884/143724745-9f366519-f747-4359-9e0c-b892b0535343.png)
+  και επομένως ```CPI = 6.37```
