@@ -69,7 +69,9 @@ simInsts                                                     5028
         * **HPI**: The HPI CPU timing model is tuned to be representative of a modern in-order Armv8-A implementation.
         * **ex5_LITTLE**: ex5 LITTLE core (based on the ARM Cortex-A7)
 
-
+Τρέχοντας το ίδιο πρόγραμμα (3x3MatrixMult) με τις ίδιες παραμέτρους (--caches) στους 2 επεξεργαστές έχουμε:  
+Για το TimingSimpleCPU: ```simSeconds                                   0.000098```  
+Για το MinorCPU
 
 
 
